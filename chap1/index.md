@@ -54,7 +54,7 @@
 
 ## Step 1 下载源
 
-本书会用到的所有的离线源，均放置于[百度云](http://pan.baidu.com/s/1gdzixz1)（http://pan.baidu.com/s/1gdzixz1）中。首先下载此离线
+本书会用到的所有的离线源，均放置于[百度云](http://pan.baidu.com/s/1gdzixz1) （http://pan.baidu.com/s/1gdzixz1） 中。首先下载此离线
 源booksrepo.tar.gz，并且放置于/opt/目录。
 
 >* 为了实验正常进行，请**务必**按照书中目录进行存放。
