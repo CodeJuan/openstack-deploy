@@ -34,7 +34,7 @@
 
 # 1.2 安装CentOS
 
-关于CentOS的安装，被移动至了**《[附录 安装CentOS 6.5 Linux操作系统](./appendix/install-centos.md)》**。请参考此步骤进行CentOS 6.5的安装。
+关于CentOS的安装，被移动至了**《[附录 安装CentOS 6.5 Linux操作系统](../appendix/install-centos.md)》**。请参考此步骤进行CentOS 6.5的安装。
 
 **特别提醒**
 >* 物理机的安装，在**服务器类型**一处，本章请选择**Desktop**。如图1.2所示。
@@ -186,4 +186,4 @@ KVM是整个OpenStack开源云的基石之一，可能说是最重要的一块�
 
 # 1.6 创建虚拟机
 
-详细地创建虚拟机的步骤，可以参考《[附录 virt-manager创建虚拟机](./appendix/virt-manager.md)》。
+详细地创建虚拟机的步骤，可以参考《[附录 virt-manager创建虚拟机](../appendix/virt-manager.md)》。
