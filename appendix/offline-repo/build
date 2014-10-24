@@ -1,0 +1,10 @@
+#!/bin/bash
+
+old_dir=`pwd`
+
+for n in `cat download | grep baseurl= | awk -F "//" '{print $2}'`; do
+    cd $old_dir
+    cd $n
+    nohup createrepo .
+    cd $old_dir
+done

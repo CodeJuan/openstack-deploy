@@ -1,0 +1,9 @@
+#!/bin/bash
+
+for n in `cat /tmp/build-log  | grep rpm | awk -F "rpm file:" '{print $2}' | awk '{print $1}' | awk -F ":" '{print $1}' | grep rpm | grep -v "^$"`; do
+    #echo $n
+    url=`echo $n | awk -F "media/" '{print $2}'`
+    echo $url
+    wget -c http://$url -O $n
+done
+

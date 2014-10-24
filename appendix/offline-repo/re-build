@@ -1,0 +1,21 @@
+#!/bin/bash
+
+old_dir=`pwd`
+
+function _get_dir() {
+    for n in `cat build-log  | \
+              grep rpm | \
+              awk -F "rpm file:" '{print $2}' | \
+              awk '{print $1}' | \
+              awk -F ":" '{print $1}' | \
+              grep rpm | grep -v "^$" | \
+              sort -u`; do
+    echo ${n%%./*}
+done
+}
+
+for n in `_get_dir | sort -u`; do
+    cd $n
+    creatrerepo .
+    cd $old_dir
+done
