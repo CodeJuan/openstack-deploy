@@ -21,3 +21,7 @@ OpenStack安装部署详解
 开始阅读
 =================
 [开始阅读](https://github.com/JiYou/openstack-depploy/blob/master/index.md)
+
+网页版
+================
+为了更好的阅读，网页版位于：http://jiyou.github.io/codelife/openstack-deploy/
