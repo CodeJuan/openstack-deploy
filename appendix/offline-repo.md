@@ -10,7 +10,7 @@ Offline Repo
 
 	sed -i "s,^    ,,g" file_path
 
-建议至https://github.com/JiYou/openstack-deploy/appendix/offline-repo中寻找本文相关脚本。
+建议至(https://github.com/JiYou/openstack-deploy/appendix/offline-repo)中寻找本文相关脚本。
 
 #方案1
 ##基本思路
