@@ -1,4 +1,4 @@
-第一章 由零开始
+第1章 由零开始
 ==========
 很高兴能够从这里开始，无论之前是否接触过OpenStack，或者Linux，哪怕只是听说过云计算。在这里，心里默念几遍“欲速则不达”，非常必要。让心开始静下来，准备开始。
 
@@ -140,7 +140,7 @@ KVM是整个OpenStack开源云的基石之一，可能说是最重要的一块�
 
 ## Step 2 安装KVM，Libvirt，virt-manager
 
-		# yum install -y kvm libvirt virt-manager
+		# yum install -y kvm libvirt virt-manager qemu-kvm
 		......
 		Complete!
 
