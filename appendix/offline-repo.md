@@ -238,14 +238,7 @@ Offline Repo
 
 然后，运行命令如下：
 
-	sed -i 's,^    ,,g' /etc/yum.repos.d/icehouse.repo
 	yum makecache
-
-**注意**
-
-	sed -i 's,^    ,,g' /etc/yum.repos.d/icehouse.repo
-	用于去掉行首的空格，如果不去掉，yum不能识别repo文件。
-
 
 # 方案2
 ##思路
@@ -548,7 +541,6 @@ Offline Repo
     enabled=1
     proxy=_none_
     
-    
     [theforeman-plugin-source]
     name=theforeman-plugins
     baseurl=http://10.239.82.94/icehouse/yum.theforeman.org/plugins/1.5/el6/source
@@ -679,6 +671,13 @@ Offline Repo
     [repos-fedorapeople]
     name=repos-fedorapeople
     baseurl=http://10.239.82.94/icehouse/repos.fedorapeople.org/repos/openstack/openstack-icehouse/epel-6/epel/
+    gpgcheck=0
+    enabled=1
+    proxy=_none_
+    
+    [maridaDB]
+    name=maridaDB
+    baseurl=http://yum.mariadb.org/5.5.36/centos6-amd64/rpms
     gpgcheck=0
     enabled=1
     proxy=_none_
