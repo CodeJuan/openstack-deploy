@@ -28,6 +28,7 @@ baseurl=https://repos.fedorapeople.org/repos/openstack/openstack-icehouse/epel-6
 baseurl=http://rpmfind.net/linux/centos/6.5/os/x86_64/Packages/
 baseurl=http://centos.mirror.nac.net/6.5/os/x86_64/Packages/
 baseurl=http://mirror.cs.vt.edu/pub/CentOS/6.5/updates/x86_64/Packages/
+baseurl=http://yum.mariadb.org/5.5.36/centos6-amd64/rpms
 "
 
 for n in $urls; do
