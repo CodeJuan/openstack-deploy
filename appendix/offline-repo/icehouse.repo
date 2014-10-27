@@ -139,3 +139,10 @@ baseurl=http://10.239.82.94/icehouse/repos.fedorapeople.org/repos/openstack/open
 gpgcheck=0
 enabled=1
 proxy=_none_
+
+[maridaDB]
+name=maridaDB
+baseurl=http://10.239.82.94/icehouse/yum.mariadb.org/5.5.36/centos6-amd64/rpms
+gpgcheck=0
+enabled=1
+proxy=_none_
