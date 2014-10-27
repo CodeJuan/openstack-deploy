@@ -340,7 +340,7 @@ Offline Repo
 	done
 
 
-成功去掉行首多余的空格之后，运行脚本：
+运行脚本：
 
 	./download
 
