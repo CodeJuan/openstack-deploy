@@ -6,10 +6,6 @@ Offline Repo
 此处制作的离线源主要用于安装OpenStack Icehouse版本使用，其他版本仅供参考。
 # 重要提示
 
-如果是复制本页代码，会在每行代码的前面形成多余的空格。去除方法如下：
-
-	sed -i "s,^    ,,g" file_path
-
 建议至(https://github.com/JiYou/openstack-deploy/appendix/offline-repo)中寻找本文相关脚本。
 
 #方案1
@@ -232,6 +228,13 @@ Offline Repo
 	baseurl=http://repos.fedorapeople.org/repos/openstack/openstack-icehouse/epel-6/epel/
 	gpgcheck=0
 	enabled=1
+	
+	
+	[maridaDB]
+	name=maridaDB
+	baseurl=http://yum.mariadb.org/5.5.36/centos6-amd64/
+	gpgcheck=0
+	enabled=1
 
 然后，运行命令如下：
 
@@ -310,7 +313,9 @@ Offline Repo
 	baseurl=https://repos.fedorapeople.org/repos/openstack/openstack-icehouse/epel-6/epel/
 	baseurl=http://rpmfind.net/linux/centos/6.5/os/x86_64/Packages/
 	baseurl=http://centos.mirror.nac.net/6.5/os/x86_64/Packages/
-	baseurl=http://mirror.cs.vt.edu/pub/CentOS/6.5/updates/x86_64/Packages/"
+	baseurl=http://mirror.cs.vt.edu/pub/CentOS/6.5/updates/x86_64/Packages/
+	baseurl=http://yum.mariadb.org/5.5.36/centos6-amd64/rpms
+	"
 
 	for n in $urls; do
 	    url=`echo $n | awk -F "=" '{print $2}'`
@@ -334,9 +339,6 @@ Offline Repo
 	    ps aux| grep wget | wc -l
 	done
 
-复制此脚本，写入download文件，执行如下命令：
-
-	[[ `cat download | head -1 | grep "^#" | wc -l` -eq 0 ]] && sed -i "s,^    ,,g" download
 
 成功去掉行首多余的空格之后，运行脚本：
 
@@ -376,9 +378,6 @@ Offline Repo
 	done
 	echo "build success"
 
-如果是复制此内容，请运行如下命令，去掉开头多余的空格：
-
-	[[ `cat build | head -1 | grep "^#" | wc -l` -eq 0 ]] && sed -i "s,^    ,,g" build
 
 然后，执行build命令：
 
@@ -408,10 +407,6 @@ Offline Repo
 	done
 	echo "download over"
 
-如果是复制本脚本，请务必运行如下命令去掉行首多余的空格：
-
-		[[ `cat re-download | head -1 | grep "^#" | wc -l` -eq 0 ]] && sed -i "s,^    ,,g" re-download
-
 下载成功之后，请运行re-build脚本：
 
 	#!/bin/bash
@@ -436,10 +431,6 @@ Offline Repo
 	    cd $old_dir
 	done
 	echo "re-build success"
-
-如果是复制本脚本，请运行如下命令去掉行首多余的空格：
-
-		[[ `cat re-build | head -1 | grep "^#" | wc -l` -eq 0 ]] && sed -i "s,^    ,,g" re-build
 
 ## Step 3 存放至http服务器
 
