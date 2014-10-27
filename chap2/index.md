@@ -431,9 +431,9 @@ xml文件中变量%UUID0%需要根据环境进行自动替换，替换方法有�
 ### step 2
 添加磁盘，方法如图2.9所示：
 
-![](./add-storage/add-exits-disk.png)
+![](./add-storage/add-exists-disk.png)
 
-图2.9 添加已经磁盘。
+图2.9 添加已经存在的磁盘。
 
 **注意**大部分系统都支持virio磁盘驱动，如果不支持，请选择IDE Disk选项。
 
