@@ -713,8 +713,65 @@ Windows系统下只需要安装Tight VNC Viewer即可。在查看时，键入phy
 
 接着再点击，`Apply`再点击`Begin installtion`。如果出错，请先忽略，点击`Console`，查看是否已经启动。如果已经启动，请关闭virt-manager。
 
+#2.9 网关
 
-#2.9 小结
+注意，参照这种方式创建的虚拟机都不能连接外网，那么，有什么办法连接外网呢？这时，虚拟机需要以物理机为网关，然后通过配置物理机的iptables转发，便可功成功连上外部网络。
+
+**注意**以下步骤都是针对物理操作。
+
+##Step 1 开启转发功能
+首先运行命令，立即开启转发功能：
+
+	echo 1 > /proc/sys/net/ipv4/ip_forward
+
+如果想永久生效，那么最好是更改系统配置文件`/etc/sysctl.conf`，取消`#net.ipv4.ip_forward=1前面的注释`：
+
+	net.ipv4.ip_forward=1
+
+保存之后，运行：
+
+	echo 1 > /proc/sys/net/ipv4/ip_forward
+
+## Step 2 配置iptables
+之前的操作，为虚拟机创建了virbr0~virbr4四个虚拟网络设备，在这里对virbr4的网络转发进行设置，物理机iptables设置如下：
+
+	*mangle
+	:PREROUTING ACCEPT [15226430:3324222456]
+	:INPUT ACCEPT [13978281:2675656469]
+	:FORWARD ACCEPT [709431:626765112]
+	:OUTPUT ACCEPT [7897570:64770154783]
+	:POSTROUTING ACCEPT [8607001:65396919895]
+	-A POSTROUTING -o virbr4 -p udp -m udp --dport 68 -j CHECKSUM --checksum-fill
+	COMMIT
+
+	*filter
+	:INPUT ACCEPT [13978281:2675656469]
+	:FORWARD ACCEPT [709431:626765112]
+	:OUTPUT ACCEPT [7897570:64770154783]
+	-A INPUT -i virbr4 -p udp -m udp --dport 53 -j ACCEPT
+	-A INPUT -i virbr4 -p tcp -m tcp --dport 53 -j ACCEPT
+	-A INPUT -i virbr4 -p udp -m udp --dport 67 -j ACCEPT
+	-A INPUT -i virbr4 -p tcp -m tcp --dport 67 -j ACCEPT
+	-A FORWARD -d 192.168.126.0/24 -o virbr4 -m state --state RELATED,ESTABLISHED -j ACCEPT
+	-A FORWARD -s 192.168.126.0/24 -i virbr4 -j ACCEPT
+	-A FORWARD -i virbr4 -o virbr4 -j ACCEPT
+	-A FORWARD -o virbr4 -j REJECT --reject-with icmp-port-unreachable
+	-A FORWARD -i virbr4 -j REJECT --reject-with icmp-port-unreachable
+	COMMIT
+
+	*nat
+	:PREROUTING ACCEPT [658286:31061240]
+	:POSTROUTING ACCEPT [25880:1637257]
+	:OUTPUT ACCEPT [25880:1637257]
+	-A POSTROUTING -s 192.168.126.0/24 ! -d 192.168.126.0/24 -p tcp -j MASQUERADE --to-ports 1024-65535
+	-A POSTROUTING -s 192.168.126.0/24 ! -d 192.168.126.0/24 -p udp -j MASQUERADE --to-ports 1024-65535
+	-A POSTROUTING -s 192.168.126.0/24 ! -d 192.168.126.0/24 -j MASQUERADE
+	-A POSTROUTING -s 192.168.126.0/24 -o virbr4 -j SNAT --to-source 10.239.82.116
+	COMMIT
+
+**注意**这里并不需要对虚拟机的防火墙做特别的配置。
+
+#2.10 小结
 
 本文中介绍了如何连接至虚拟机，阅读本文之后，请回答如下问题：
 
