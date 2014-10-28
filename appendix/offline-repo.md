@@ -95,7 +95,6 @@ Offline Repo
 
 接下来，就可以使用做好的离线源了。
 
-	sed -i 's,^    ,,g' /etc/yum.repos.d/openstack-repo.repo
 	yum makecache
 	yum install openstack-nova-compute
 
@@ -183,13 +182,13 @@ Offline Repo
 
 	[ceph]
 	name=ceph
-	baseurl=http://ceph.com/rpm/el6/x86_64/
+	baseurl=http://ceph.com/rpm/el6/x86_64
 	gpgcheck=0
 	enabled=1
 
 	[ceph-extras]
 	name=ceph-extras
-	baseurl=http://ceph.com/packages/ceph-extras/rpm/centos6/x86_64/
+	baseurl=http://ceph.com/packages/ceph-extras/rpm/centos6/x86_64
 	gpgcheck=0
 	enabled=1
 
@@ -197,23 +196,23 @@ Offline Repo
 	name=epel
 	baseurl=http://mirror.steadfast.net/epel/6/x86_64/
 	gpgcheck=0
-	enabled=0
+	enabled=1
 
 	[rpmfind]
 	name=rpmfind
-	baseurl=http://rpmfind.net/linux/centos/6.5/os/x86_64/Packages/
+	baseurl=http://rpmfind.net/linux/centos/6.5/os/x86_64/
 	gpgcheck=0
 	enabled=1
 
 	[nac-net]
 	name=nac-net
-	baseurl=http://centos.mirror.nac.net/6.5/os/x86_64/Packages/
+	baseurl=http://centos.mirror.nac.net/6.5/os/x86_64/
 	gpgcheck=0
 	enabled=1
 
 	[cs.vt]
 	name=cs-vt
-	baseurl=http://mirror.cs.vt.edu/pub/CentOS/6.5/updates/x86_64/Packages/
+	baseurl=http://mirror.cs.vt.edu/pub/CentOS/6.5/updates/x86_64/
 	gpgcheck=0
 	enabled=1
 
@@ -223,13 +222,6 @@ Offline Repo
 	gpgcheck=0
 	enabled=1
 
-	[repos-fedorapeople]
-	name=repos-fedorapeople
-	baseurl=http://repos.fedorapeople.org/repos/openstack/openstack-icehouse/epel-6/epel/
-	gpgcheck=0
-	enabled=1
-	
-	
 	[maridaDB]
 	name=maridaDB
 	baseurl=http://yum.mariadb.org/5.5.36/centos6-amd64/
